@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Math exam generator v1.0</title>
+    <script src="js/react-0.14.7.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+
+    class QuestionGenerator extends React.Component{
+        constructor(props) {
+            super(props);
+
+        }
+        render() {
+            return (
+                <div>
+                  <h1>Math exam generator v1.0</h1>
+                  <label>{getNum(this.props['num1'])}</label>
+                  <label>{getOp()}</label>
+                  <label>{getNum(this.props['num2'])}</label>
+                </div>
+            )
+        }
+
+        getNum(num) {
+            return 40;
+        }
+        getOp() {
+            var ops = ['+','-','*','/'];
+            var operator = ops[Math.floor(Math.random()*items.length)];
+            return operator;
+        }
+    }
+    // *** TODO ***
+    // class ExamGenerator extends React.Component{
+    //     constructor(props) {
+    //         super(props);
+    //
+    //     }
+    //     render() {
+    //         return (
+    //             <div>
+    //               <h1>Math exam generator v1.0</h1>
+    //               <label>{getNum(this.props['num1'])}</label>
+    //               <label>{getOp(this.props['num1'])}</label>
+    //               <label>{getNum(this.props['num2'])}</label>
+    //             </div>
+    //         )
+    //     }
+    // }
+
+    ReactDOM.render(<QuestionGenerator num1="" num2="" />, document.getElementById('app') );
+
+    </script>
+</body>
+
+</html>

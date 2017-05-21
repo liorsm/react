@@ -1,0 +1,81 @@
+<!-- TODO:
+    1. new component MathOp generate math operators
+    2. use MathOp in old Component
+    3. full exam:
+    create new Component ExamsGeneration that use in old Component and render full exam with 10 question and button check all -->
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Math exam generator v1.0</title>
+    <script src="js/react-0.14.7.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+
+<body>
+  <h1>Math exam generator v1.0</h1>
+  <div id="app"></div>
+  <script type="text/babel">
+
+  class QuestionsGeneretion extends React.Component{
+
+    constructor(props) {
+      super(props);
+      this.checkMe = this.checkMe.bind(this);
+    }
+
+    render() {
+      return (
+        <div>
+          <label ref="num1">{this.getNum()}</label>
+          <label ref="opr"> {this.getOp()} </label>
+          <label ref="num2">{this.getNum()}</label>
+          <label> = </label>
+          <input ref="u_answer" type="text" placeholder="Enter your answer..." />
+          <button onClick={this.checkMe.bind()}>Check</button>
+          <br/><br/>
+    </div>
+      )
+    }
+    getNum(){
+        return Math.floor(Math.random() * 99) + 1 ;
+    }
+
+    getOp(){
+        return ['+','-','*','/'][Math.floor(Math.random()*4)];
+    }
+
+    checkMe(){
+        var result = eval(this.refs.num1.innerText + this.refs.opr.innerText + this.refs.num2.innerText);
+        if(this.refs.u_answer.value == result){
+            console.log("OK :)");
+            return "OK :)";
+        } else {
+            console.log("Wrong!");
+            return "Wrong!";
+        }
+    }
+
+  }
+
+
+  ReactDOM.render(<div>
+                    <QuestionsGeneretion />
+                    <QuestionsGeneretion />
+                    <QuestionsGeneretion />
+                    <QuestionsGeneretion />
+                    <QuestionsGeneretion />
+                    <QuestionsGeneretion />
+                    <QuestionsGeneretion />
+                    <QuestionsGeneretion />
+                    <QuestionsGeneretion />
+                    <QuestionsGeneretion />
+                </div>,
+                document.getElementById('app'));
+  </script>
+
+    <FORM>
+      <INPUT TYPE="button" onClick="history.go(0)" VALUE="Generate again">
+    </FORM>
+</body>
+</html>
